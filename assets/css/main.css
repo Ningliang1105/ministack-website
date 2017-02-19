@@ -2141,6 +2141,10 @@
 		margin: 0 0 1em 0;
 	}
 
+		.content h2 {
+			color: white;
+		}
+
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 			color: inherit;
 			text-decoration: none;
@@ -2272,6 +2276,18 @@
 		text-align: center;
 	}
 
+	section img {
+		max-height: 100%;
+	}
+
+	.content img {
+		float: inline-block;
+		max-height: 150px;
+		max-width: 20%;
+		float:right;
+		margin-left: 2em;
+	}
+
 	header p {
 		font-family: "Roboto Slab", serif;
 		font-size: 1em;
@@ -2279,6 +2295,10 @@
 		letter-spacing: 0.075em;
 		margin-top: -0.5em;
 		text-transform: uppercase;
+	}
+
+	header img {
+		height: 35px;
 	}
 
 	header.major > :last-child {
@@ -2552,6 +2572,13 @@
 
 /* Image */
 
+	.image-side {
+		float:right;
+		display: inline-block;
+		max-width: 40%;
+		margin: 5px;
+	}
+
 	.image {
 		border-radius: 0.375em;
 		border: 0;
@@ -2562,6 +2589,8 @@
 		.image img {
 			border-radius: 0.375em;
 			display: block;
+			max-height: 300px;
+			
 		}
 
 		.image.left, .image.right {
@@ -2685,6 +2714,8 @@
 		ul.contact {
 			list-style: none;
 			padding: 0;
+			width:35%;
+			display: inline-block;
 		}
 
 			ul.contact li {
@@ -2693,6 +2724,11 @@
 				margin: 1.5em 0 0 0;
 				padding: 1.5em 0 0 3em;
 				position: relative;
+			}
+
+			#sidebar .contact , #sidebar img{
+				width: 100%;
+				max-width: 100%;
 			}
 
 				ul.contact li:before {
@@ -3054,7 +3090,7 @@ ul.readmore {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			background-color: rgba(245, 106, 106, 0.05);
+			background-color: rgba(207, 211, 214, 0.05);
 		}
 
 		input[type="submit"]:active,
@@ -3414,6 +3450,11 @@ ul.readmore {
 				.posts article .image img {
 					display: block;
 					width: 100%;
+				}
+
+				.posts article .image2 img {
+					display: block;
+					max-width: 100%;
 				}
 
 		@media screen and (min-width: 1681px) {
@@ -3871,7 +3912,7 @@ ul.readmore {
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		border-bottom: solid 5px #29bfae;
+		border-bottom: solid 0px #29bfae;
 		padding: 6em 0 1em 0;
 		position: relative;
 	}
@@ -3932,10 +3973,17 @@ ul.readmore {
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
+		background-image: url("images/learncoding-02.jpg"), url("../../images/learncoding-02.jpg");
+		background-position: top center,							top center;
+		background-repeat: repeat,								no-repeat;
+		background-size: auto,								auto 100%;
+		max-width: inherit;
+
 	}
 
 		#banner h1 {
 			margin-top: -0.125em;
+			text-align: center;
 		}
 
 		#banner .content {
@@ -3947,7 +3995,11 @@ ul.readmore {
 			-webkit-flex-shrink: 1;
 			-ms-flex-shrink: 1;
 			flex-shrink: 1;
-			width: 50%;
+			width: 100%;
+			background-size: cover;
+			background-image: images/banner.jpg;
+			color: white;
+			text-align: center;
 		}
 
 		#banner .image {
@@ -3961,7 +4013,7 @@ ul.readmore {
 			flex-shrink: 0;
 			display: block;
 			margin: 0 0 2em 4em;
-			width: 50%;
+			width: 100%;
 		}
 
 			#banner .image img {
