@@ -2845,7 +2845,6 @@ ul.readmore {
 
 			ul.readmore li {
 				float:right;
-
 				padding: 0 1em 0 0;
 				vertical-align: middle;
 			}
@@ -2904,6 +2903,18 @@ ul.readmore {
 					ul.readmore.fit.small li {
 						padding: 0 0 0 0.5em;
 					}
+
+				@media screen and (max-width: 480px) {
+
+				ul.pagination li:nth-child(n+2):nth-last-child(n+2) {
+					display: none;
+				}
+
+				ul.pagination li:first-child {
+					padding-right: 0;
+				}
+
+			}
 
 		ul.pagination {
 			cursor: default;
