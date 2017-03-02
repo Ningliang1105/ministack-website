@@ -2481,7 +2481,7 @@
 		justify-content: space-between;
 		background-color: #1f1815;
 		background-attachment: scroll,								fixed;
-		background-image: url("images/overlay.png"), url("../../images/bg.jpg");
+		background-image: url("images/pic01.jpg"), url("../../images/blogcover.jpg");
 		background-position: top left,							top left;
 		background-repeat: repeat,								no-repeat;
 		background-size: auto,								auto 100%;
@@ -2512,11 +2512,11 @@
 		}
 
 		#header strong, #header b {
-			color: #ffffff;
+			color: #59595B;
 		}
 
 		#header h2, #header h3, #header h4, #header h5, #header h6 {
-			color: #ffffff;
+			color: #59595B;
 		}
 
 		#header h1 {
