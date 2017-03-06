@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>博客文章-小栈教育</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><img src='images/logo.png'></a>
+									<ul class="icons">
+										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>JavaScript面试中需要注意的3个问题</h1>
+									</header>
+
+									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
+
+									<p>JavaScript是所有当下流行的浏览器的官方支持语言。正因如此，关于JavaScript的问题常常出现在各类程序员面试中。</p>
+
+									<p>这篇文章不是讲最新的JavaScript库的，也不是常见的开发实践，或者ES6的最新功能。我们将讨论面试中提到JavaScript时经常出现的三个问题。我自己经常被问到这些问题，我的朋友也有相同的经历。</p>
+
+									<p>当然这并不意味着你准备JavaScript面试的时候只需要准备这三个问题——对于即将到来的面试你有许多需要准备的东西，但面试官可能通过这三个问题考察你对JavaScript语言以及DOM的了解程度。</p>
+
+									<p>进入正题！我们下列例子中将使用原生JavaScript，因为面试官通常希望考察你在没有jQuery等库的帮助下对于JavaScript以及DOM有多了解。</p>
+
+									<h3>问题1：事件代理（Event delegation）</h3>
+
+									<p>当开发一款应用的时候，有时候你需要给页面上的按键、文字或者图片添加事件监听器，以此实现用户和这个元素的互动效果。</p>
+
+									<p>我们拿一个简单的待办事项表来举例，面试官可能要求你在用户点击一个列表项的时候触发一个事件。他们希望你基于下列的HTML代码，用JavaScript实现这一功能。</p>
+
+									<script src="https://gist.github.com/danielborowski/5ecc889f1324b69ef6668cff5470c92c.js"></script>
+
+									<p>你可能会用下列代码来绑定这个事件监听器：</p>
+
+									<script src="https://gist.github.com/danielborowski/23f8a5e5a12248654ba345bcdf7ba6fe.js"></script>
+
+									<p>这样的代码理论上行得通，但给每个项目单独加上事件监听器可能会存在问题。对于四个项目来说这是可行的，但如果是加给10000个项呢（假设这个人非常非常忙）？你的函数将会生成10000个独立的事件监听器并绑定到DOM。这个方法效率太低。</p>
+
+									<p>在面试中建议你先问一下面试官：用户最多可以输入多少个元素。如果这个数字不超过10，用上面例子的代码是没有问题的。但如果用户可以输入的数量没有上限，那么你就需要寻找一个更有效率的解决方案了。</p>
+
+									<p>如果你的应用需要数百个事件监听器，更有效的方法是给整个容器绑定一个监听器，通过这个监听器去控制每一个项的点击事件。这叫做事件代理，比起给每个项加上单独的事件监听器，这个方法更加有效。</p>
+
+									<p>下面是事件代理的代码：</p>
+
+									<script src="https://gist.github.com/danielborowski/80179ee1b361b9c792e49f6453ce276f.js"></script>
+
+									<h3>问题2：在循环中使用闭包</h3>
+
+									<p>闭包问题也经常在面试中被问及，面试官借此了解你对语言的了解程度，以及你是否清楚什么时候应该使用闭包。</p>
+
+									<p>闭包简单说就是一个匿名函数可以访问它外部的变量。闭包可以用于保护隐私信息或者创建工厂函数。关于闭包的一个常见面试问题是这样的：</p>
+
+									<p>写一个函数遍历一个数组列表，在三秒延迟之后输出每个元素的序号。</p>
+
+									<p>一个常见（但错误）的实践方法如下代码所示：</p>
+
+									<script src="https://gist.github.com/danielborowski/2979deaab5a7d3b5bd9e7d3794c21cd7.js"></script>
+
+									<p>运行这段代码，每次输出的值都是4，而不是我们所要求的延迟3秒后依次输出0，1，2，3。</p>
+
+									<p>正确地理解为什么会出现这个问题对于掌握JavaScript十分重要，面试官的意图也在于此。</p>
+
+									<p>原因在于setTimeout函数创建了一个能访问外部变量的匿名函数，即含有序列i的循环。在三秒钟过后，这个函数被执行，并输出i的值。此时循环经历0，1，2，3，4，到4结束，i的输出是4。</p>
+
+									<p>有多个方法可以达到我们想要的效果，下面给出两个示例：</p>
+
+									<script src="https://gist.github.com/danielborowski/19ac92cc8e985e4bded2dd445f925345.js"></script>
+
+									<script src="https://gist.github.com/danielborowski/9ff069c35c8210bd3f4d9ff27f800b61.js"></script>
+
+									<h3>问题3：Debouncing</h3>
+
+									<p>有一些浏览器事件会在极短的时间内快速触发很多次，比如改变窗口的大小或向下滚动页面。如果你对窗口滚动事件绑定了一个监听器，当用户持续快速滚动页面的时候，你的事件可能在三秒内就被触发上千次。这可能会引起严重的性能问题。</p>
+
+									<p>如果你在面试中讨论编写一个应用，并涉及到滚动、窗口大小变化、按键点击等方面，记得提起用debouncing，或throttling等方法提升页面速度和性能。这个真实的例子引自 css-tricks博客：</p>
+
+									<q>在2011年，Twitter网站出现了一个问题：当你向下滚动Twitter推送的时候，页面变得极慢，响应不及时。John Resig发表了一篇博客谈论了直接绑定复杂函数到scroll事件的各种坏处。</q>
+
+									<p>Debouncing通过加入函数两次被调用之间的最小时间间隔来限制调用次数。一个debouncing的正确做法是把原本调用的多个函数集合成一个，随着时间的推移去调用它。下面这个JavaScript实践例子包含了作用域、闭包、debouncing以及时间事件等各种实践：</p>
+
+									<script src="https://gist.github.com/danielborowski/8e86606949158164724f3d73da5d9ff2.js"></script>
+
+									<p>这个包含了数个事件的函数只会每隔一段时间执行一次。</p>
+
+									<p>你可以像下面这样使用这个函数：</p>
+
+									<script src="https://gist.github.com/danielborowski/5b35fdcdff8d02ecf29dc386b6bf2797.js"></script>
+
+									<p>Throttling是类似于debouncing的另一项技术，不同点在于后者是每隔一段时间调用一次函数，而throttling把函数的调用次数分配到一个更长的时间段里。假设一个事件在100毫秒里发生了10次，throttling可以把函数调用的频率降低到2秒一次，而不全在这100毫秒里发生。</p>
+
+									<a href='https://medium.freecodecamp.com/3-questions-to-watch-out-for-in-a-javascript-interview-725012834ccb#.ea35bcf1b'>博客原文</a>
+
+									
+									
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2><a href='index.html'>小栈教育</a></h2>
+									</header>
+									<ul>
+										<li><a href="index.html">回到主页</a></li>
+										<li><a href="aboutus.html">关于我们</a></li>
+										
+										<li>
+											<span class="opener">课程一览</span>
+											<ul>
+												<li><a href="javascript.html">JavaScript精品班</a></li>
+												<li><a href="python.html">Python少年班</a></li>
+												<li><a href="new_course.html">iOS应用</a></li>
+												<li><a href="new_course.html">乐高MindStorm</a></li>
+												<li><a href="new_course.html">网络课程</a></li>
+											</ul>
+										<li><a href="index-blog.html">小栈博客</a></li>
+										<li><a href="job.html">企业招聘</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<!--<section>
+									<header class="major">
+										<h2>Ante interdum</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">More</a></li>
+									</ul>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>联系我们</h2>
+									</header>
+									<p>工作时间：周一到周五 9:00-18:00</p>
+									<ul class="contact" width=100%>
+										<li class="fa-envelope-o"><a href="#">info@stackedu.com</a></li>
+										<li class="fa-phone">（010）5713-7023</li>
+										<li class="fa-home">北京东城区东四九条88号 共享际<br />
+										100020</li>
+									</ul>
+									<img src='images/map.png'>
+								</section>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
